@@ -1,42 +1,63 @@
 ﻿using meditation.Core.Models.Domain;
+using meditation.Infrastructure.DataStoreContext;
 using meditation.Infrastructure.Repository.Interface;
+using Microsoft.EntityFrameworkCore;
 
 namespace meditation.Infrastructure.Repository.Implementation
 {
     public class MantraRepository : IMantraRepository
     {
-        public MantraRepository()
+        private readonly StoreContext _storeContext;
+
+        public MantraRepository(StoreContext storeContext)
         {
-            
+            _storeContext = storeContext;
         }
-        public Task<MantraModel> CreateMantrasAsync(MantraModel mantras)
+        public async Task<MantraModel> CreateMantrasAsync(MantraModel mantras)
         {
-            throw new NotImplementedException();
+            await _storeContext.Mantras.AddAsync(mantras);  
+            await _storeContext.SaveChangesAsync();
+            return mantras;
         }
 
 
-        public Task<IEnumerable<MantraModel>> GetAllMantrasAsync()
+        public async Task<IEnumerable<MantraModel>> GetAllMantrasAsync()
         {
-            throw new NotImplementedException();
+            return await _storeContext.Mantras.ToListAsync();
         }
 
-        public Task<MantraModel> GetMantrasByIdAsync(Guid id)
+        public async Task<MantraModel> GetMantrasByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _storeContext.Mantras.FirstOrDefaultAsync(m => m.Id == id);
         }
 
-        public Task<MantraModel> GetMantrasByNameAsync(string mantraname)
+        public async Task<MantraModel> GetMantrasByNameAsync(string mantraname)
         {
-            throw new NotImplementedException();
+            return await _storeContext.Mantras.FirstOrDefaultAsync(m => m.MantraName == mantraname);
         }
 
-        public Task<MantraModel> UpdateMantrasAsync(MantraModel mantras)
+        public async Task<MantraModel> UpdateMantrasAsync(MantraModel mantras)
         {
-            throw new NotImplementedException();
+            var existingMantras = await _storeContext.Mantras.FirstOrDefaultAsync(m=>m.Id == mantras.Id);
+            if (existingMantras != null)
+            {
+                _storeContext.Entry(existingMantras).CurrentValues.SetValues(mantras);
+                await _storeContext.SaveChangesAsync();
+                return mantras;
+            }
+            return null;
         }
-        public Task<MantraModel> DeleteMantrasAsync(Guid id)
+        public async Task<MantraModel> DeleteMantrasAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var existingMantras = await _storeContext.Mantras.FirstOrDefaultAsync(m => m.Id == id);
+            if (existingMantras != null)
+            {
+                return null;
+            }
+
+            _storeContext.Mantras.Remove(existingMantras);
+            await _storeContext.SaveChangesAsync();
+            return existingMantras;
         }
     }
 }
