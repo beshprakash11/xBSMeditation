@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace xBSMeditation.MVVM.Models
 {
-    public class MahakaliMantraModel
+    public class MahakaliMantraModel:BaseModel
     {
         public int NumberOfMantraCount { get; set; } //10 mala /day
         public int NumberOfBedInMala { get; set; } //108
