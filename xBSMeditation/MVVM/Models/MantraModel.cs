@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace xBSMeditation.MVVM.Models
 {
-    public class MantraModel
+    public class MantraModel:BaseModel
     {
     }
 }
