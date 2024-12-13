@@ -24,11 +24,11 @@ namespace meditation.Controllers
             var mantras = new MantraModel
             {
                  MantraName = mantraModelCreateDto.MantraName,
-                 MantraImage = mantraModelCreateDto.MantraImage,
-                 MantraAudio = mantraModelCreateDto.MantraAudio,
+                 MantraImage = mantraModelCreateDto.MantraImagePath,
+                 MantraAudio = mantraModelCreateDto.MantraAudioPath,
                  MantraDescription = mantraModelCreateDto.MantraDescription,
-                 LordImage = mantraModelCreateDto.LordImage,
-                 LordThreed = mantraModelCreateDto.LordThreed,
+                 LordImage = mantraModelCreateDto.LordImagePath,
+                 LordThreed = mantraModelCreateDto.LordThreedPath,
                  CreatedAt = DateTime.Now,
                  UpdatedAt = DateTime.Now,
             };
@@ -64,11 +64,11 @@ namespace meditation.Controllers
                 {
                     Id = mantra.Id,
                     MantraName = mantra.MantraName,
-                    MantraImage = mantra.MantraImage,
-                    MantraAudio = mantra.MantraAudio,
+                    MantraImage = mantra.MantraImagePath,
+                    MantraAudio = mantra.MantraAudioPath,
                     MantraDescription = mantra.MantraDescription,
-                    LordImage = mantra.LordImage,
-                    LordThreed = mantra.LordThreed,
+                    LordImage = mantra.LordImagePath,
+                    LordThreed = mantra.LordThreedPath,
                     CreatedAt = mantra.CreatedAt,
                     UpdatedAt = mantra.UpdatedAt,
                 });

@@ -3,6 +3,7 @@ using meditation.Infrastructure.DataStoreContext;
 using meditation.Infrastructure.Repository.Implementation;
 using meditation.Infrastructure.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 
 namespace meditation
 {
@@ -37,6 +38,20 @@ namespace meditation
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            //Corepolicy settings
+            app.UseCors(options => {
+                options.AllowAnyHeader();
+                options.AllowAnyOrigin();
+                options.AllowAnyMethod();
+            });
+
+            //Statics file setting for file direction
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
+                RequestPath = "/wwwroot"
+            });
 
             app.UseHttpsRedirection();
 
