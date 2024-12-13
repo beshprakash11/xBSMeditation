@@ -26,15 +26,15 @@ namespace meditation.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("LordImage")
+                    b.Property<string>("LordImagePath")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("LordThreed")
+                    b.Property<string>("LordThreedPath")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("MantraAudio")
+                    b.Property<string>("MantraAudioPath")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -42,7 +42,7 @@ namespace meditation.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("MantraImage")
+                    b.Property<string>("MantraImagePath")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

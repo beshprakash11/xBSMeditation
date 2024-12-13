@@ -17,11 +17,11 @@ namespace meditation.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     MantraName = table.Column<string>(type: "TEXT", nullable: false),
-                    MantraImage = table.Column<string>(type: "TEXT", nullable: false),
-                    MantraAudio = table.Column<string>(type: "TEXT", nullable: false),
+                    MantraImagePath = table.Column<string>(type: "TEXT", nullable: false),
+                    MantraAudioPath = table.Column<string>(type: "TEXT", nullable: false),
                     MantraDescription = table.Column<string>(type: "TEXT", nullable: false),
-                    LordImage = table.Column<string>(type: "TEXT", nullable: false),
-                    LordThreed = table.Column<string>(type: "TEXT", nullable: false),
+                    LordImagePath = table.Column<string>(type: "TEXT", nullable: false),
+                    LordThreedPath = table.Column<string>(type: "TEXT", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },

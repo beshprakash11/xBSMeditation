@@ -18,6 +18,7 @@ namespace meditation.Controllers
         }
 
         [HttpPost]
+        [RequestSizeLimit(52428800)] // 50 MB for this action
         public async Task<ActionResult> CreateMantrasAsync(MantraModelCreateDto mantraModelCreateDto)
         {
             // File handling logic
