@@ -46,13 +46,19 @@ namespace meditation.Controllers
             {
                 lordThreedPath = await SaveFileAsync(mantraModelCreateDto.LordThreed, "mantras/3d");
             }
+
+            if (string.IsNullOrEmpty(mantraModelCreateDto.MantraDescription))
+            {
+                return BadRequest("MantraDescription is required.");
+            }
+
             // Map DTO to Entity
             var mantras = new MantraModel
             {
                 MantraName = mantraModelCreateDto.MantraName,
                 MantraImagePath = mantraImagePath,
                 MantraAudioPath = mantraAudioPath,
-                MantraDescription = mantraModelCreateDto.MantraDescription,
+                MantraDescription = mantraModelCreateDto.MantraDescription ?? "",
                 LordImagePath = lordImagePath,
                 LordThreedPath = lordThreedPath,
                 CreatedAt = DateTime.Now,
