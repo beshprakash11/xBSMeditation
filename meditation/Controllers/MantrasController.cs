@@ -40,11 +40,11 @@ namespace meditation.Controllers
             var response = new MantraModelCreateDto
             {
                 MantraName = mantras.MantraName,
-                MantraImage = mantras.MantraImage,
-                MantraAudio = mantras.MantraAudio,
+                MantraImage = mantras.MantraImagePath,
+                MantraAudio = mantras.MantraAudioPath,
                 MantraDescription = mantras.MantraDescription,
-                LordImage = mantras.LordImage,
-                LordThreed = mantras.LordThreed,
+                LordImage = mantras.LordImagePath,
+                LordThreed = mantras.LordThreedPath,
                 CreatedAt = mantras.CreatedAt,
                 UpdatedAt = mantras.UpdatedAt,
             };
