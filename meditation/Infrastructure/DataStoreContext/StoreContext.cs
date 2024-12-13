@@ -8,6 +8,13 @@ namespace meditation.Infrastructure.DataStoreContext
         public StoreContext(DbContextOptions options) : base(options) { }
 
         public DbSet<MantraModel> Mantras { get; set; }
+        public DbSet<AdditionalMantraModel> AdditionalMantras { get; set; }
+        public DbSet<GaneshaMantraModel> GaneshaMantras { get; set; }
+        public DbSet<KrishnaMantraModel> KrishnaMantras { get; set; }
+        public DbSet<MahakaliMantraModel> MahakaliMantras { get; set; }
+        public DbSet<MahamrityunjayaModel> Mahamrityunjayas { get; set; }
+        public DbSet<ShivaMantraModel> ShivaMantras { get; set; }
+  
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
