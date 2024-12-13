@@ -81,23 +81,18 @@ namespace meditation.Controllers
         public async Task<IActionResult> GetAllMantras()
         {
             var mantras = await _mantraRepository.GetAllMantrasAsync();
-            var response = new List<MantraModelCreateDto>();
-
-            foreach (var mantra in mantras)
+            var response = mantras.Select(mantra => new MantraModelCreateDto
             {
-                response.Add(new MantraModelCreateDto
-                {
-                    Id = mantra.Id,
-                    MantraName = mantra.MantraName,
-                    MantraImage = mantra.MantraImagePath,
-                    MantraAudio = mantra.MantraAudioPath,
-                    MantraDescription = mantra.MantraDescription,
-                    LordImage = mantra.LordImagePath,
-                    LordThreed = mantra.LordThreedPath,
-                    CreatedAt = mantra.CreatedAt,
-                    UpdatedAt = mantra.UpdatedAt,
-                });
-            }
+                Id = mantra.Id,
+                MantraName = mantra.MantraName,
+                MantraImagePath = mantra.MantraImagePath, // Path to the image
+                MantraAudioPath = mantra.MantraAudioPath, // Path to the audio
+                MantraDescription = mantra.MantraDescription,
+                LordImagePath = mantra.LordImagePath, // Path to the lord image
+                LordThreedPath = mantra.LordThreedPath, // Path to the 3D file
+                CreatedAt = mantra.CreatedAt,
+                UpdatedAt = mantra.UpdatedAt,
+            }).ToList();
             return Ok(response);
         }
 
