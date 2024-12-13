@@ -1,4 +1,9 @@
 
+using meditation.Infrastructure.DataStoreContext;
+using meditation.Infrastructure.Repository.Implementation;
+using meditation.Infrastructure.Repository.Interface;
+using Microsoft.EntityFrameworkCore;
+
 namespace meditation
 {
     public class Program
@@ -13,6 +18,16 @@ namespace meditation
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            //SQLite configureation
+            builder.Services.AddDbContext<StoreContext>(opt =>
+            {
+                opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
+
+
+            //Configuration interface and repository
+            builder.Services.AddScoped<IMantraRepository, MantraRepository>();
 
             var app = builder.Build();
 
