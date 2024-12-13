@@ -1,6 +1,6 @@
 ﻿namespace meditation.Core.Models.Domain
 {
-    public class KrishnaMantraModel
+    public class KrishnaMantraModel : BaseModel
     {
     }
 }
