@@ -74,7 +74,7 @@ namespace meditation.Controllers
                 MantraName = mantras.MantraName,
                 MantraImagePath = mantras.MantraImagePath,
                 MantraAudioPath = mantras.MantraAudioPath,
-                MantraDescription = mantras.MantraDescription,
+                MantraDescription = mantras.MantraDescription ?? "",
                 LordImagePath = mantras.LordImagePath,
                 LordThreedPath = mantras.LordThreedPath,
                 CreatedAt = mantras.CreatedAt,
