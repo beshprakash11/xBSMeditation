@@ -1,6 +1,6 @@
 ﻿namespace meditation.Core.Models.Domain
 {
-    public class MahakaliMantraModel
+    public class MahakaliMantraModel:BaseModel
     {
     }
 }
