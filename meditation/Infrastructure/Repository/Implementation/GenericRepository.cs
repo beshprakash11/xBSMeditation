@@ -29,6 +29,7 @@ namespace meditation.Infrastructure.Repository.Implementation
         public async Task<T?> GetByIdAsync(Guid id)
         {
             return await _storeContext.Set<T>().FirstOrDefaultAsync(g => g.Id == id);
+        }
 
         public Task<T?> GetByNameAsync(string TName)
         {
