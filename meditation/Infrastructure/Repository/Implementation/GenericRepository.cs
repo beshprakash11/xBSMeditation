@@ -1,11 +1,18 @@
 ﻿using meditation.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using meditation.Infrastructure.Repository.Interface;
+using meditation.Infrastructure.DataStoreContext;
 
 namespace meditation.Infrastructure.Repository.Implementation
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseModel
     {
+        private readonly StoreContext _storeContext;
+
+        public GenericRepository(StoreContext storeContext)
+        {
+            _storeContext = storeContext;
+        }
         public Task<T> CreateAsync(T TEntity)
         {
             throw new NotImplementedException();
