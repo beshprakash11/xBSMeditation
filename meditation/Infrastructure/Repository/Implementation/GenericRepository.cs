@@ -21,9 +21,9 @@ namespace meditation.Infrastructure.Repository.Implementation
         }
         
 
-        public Task<IEnumerable<T>> GetAllAsync()
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _storeContext.Set<T>().ToListAsync();
         }
 
         public Task<T?> GetByIdAsync(Guid id)
