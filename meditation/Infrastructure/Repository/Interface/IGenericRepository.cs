@@ -7,6 +7,7 @@ namespace meditation.Infrastructure.Repository.Interface
         Task<T> CreateAsync(T TEntity);
         Task<IEnumerable<T>> GetAllAsync();
         Task<T?> GetByIdAsync(Guid id);
+        Task<T?> GetByNameAsync(string TName);
         Task<T?> UpdateByIdAsync(T TEntity);
         Task<T?> DeleteByIdAsync(Guid id);
     }
