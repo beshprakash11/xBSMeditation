@@ -13,9 +13,11 @@ namespace meditation.Infrastructure.Repository.Implementation
         {
             _storeContext = storeContext;
         }
-        public Task<T> CreateAsync(T TEntity)
+        public async Task<T> CreateAsync(T TEntity)
         {
-            throw new NotImplementedException();
+            await _storeContext.Set<T>().AddAsync(TEntity);
+            await _storeContext.SaveChangesAsync(); 
+            return TEntity;
         }
         
 
