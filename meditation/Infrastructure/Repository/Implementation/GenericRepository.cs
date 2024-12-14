@@ -31,6 +31,11 @@ namespace meditation.Infrastructure.Repository.Implementation
             throw new NotImplementedException();
         }
 
+        public Task<T?> GetByNameAsync(string TName)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<T?> UpdateByIdAsync(T TEntity)
         {
             throw new NotImplementedException();
@@ -39,6 +44,6 @@ namespace meditation.Infrastructure.Repository.Implementation
         public Task<T?> DeleteByIdAsync(Guid id)
         {
             throw new NotImplementedException();
-        }
+        }        
     }
 }
