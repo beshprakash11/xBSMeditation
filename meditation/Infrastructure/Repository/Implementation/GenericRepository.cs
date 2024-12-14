@@ -48,9 +48,16 @@ namespace meditation.Infrastructure.Repository.Implementation
             return null;
         }
 
-        public Task<T?> DeleteByIdAsync(Guid id)
+        public async Task<T?> DeleteByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var existingEntity = await _storeContext.Set<T>().FirstOrDefaultAsync(g => g.Id == id);
+            if (existingEntity is null)
+            {
+                return null;
+            }
+            _storeContext.Set<T>().Remove(existingEntity);
+            await _storeContext.SaveChangesAsync();
+            return existingEntity;
         }        
     }
 }
