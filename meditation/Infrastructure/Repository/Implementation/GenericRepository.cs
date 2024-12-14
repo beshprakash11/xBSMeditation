@@ -31,11 +31,14 @@ namespace meditation.Infrastructure.Repository.Implementation
             return await _storeContext.Set<T>().FirstOrDefaultAsync(g => g.Id == id);
         }
 
-        public Task<T?> GetByNameAsync(string TName)
+        public async Task<T?> GetByNameAsync(string TName)
         {
-            var name = typeof(T).GetProperty("TName");
-            if (name == null)
+            var property = typeof(T).GetProperty("TName");
+            if (property == null)
                 throw new ArgumentException($"Type {typeof(T).Name} does not have a property named 'TName'.");
+
+            return await _storeContext.Set<T>().FirstOrDefaultAsync(
+                entity => property.GetValue(entity)!.ToString() == TName);
         }
 
         public async Task<T?> UpdateByIdAsync(T TEntity)
