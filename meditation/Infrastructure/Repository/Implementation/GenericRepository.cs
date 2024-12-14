@@ -33,7 +33,9 @@ namespace meditation.Infrastructure.Repository.Implementation
 
         public Task<T?> GetByNameAsync(string TName)
         {
-            throw new NotImplementedException();
+            var name = typeof(T).GetProperty("TName");
+            if (name == null)
+                throw new ArgumentException($"Type {typeof(T).Name} does not have a property named 'TName'.");
         }
 
         public async Task<T?> UpdateByIdAsync(T TEntity)
