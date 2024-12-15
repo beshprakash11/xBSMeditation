@@ -6,10 +6,18 @@
              x:Class="xBSMeditation.MainPage"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
 
-    <ContentPage>
+    <ContentPage Title="Home">
         <BlazorWebView  HostPage="wwwroot/index.html">
             <BlazorWebView.RootComponents>
-                <RootComponent Selector="#app" ComponentType="{x:Type local:Components.Routes}" />
+                <RootComponent Selector="#app" ComponentType="{x:Type pages:Home}" />
+            </BlazorWebView.RootComponents>
+        </BlazorWebView>
+    </ContentPage>
+
+    <ContentPage Title="MM">
+        <BlazorWebView  HostPage="wwwroot/index.html">
+            <BlazorWebView.RootComponents>
+                <RootComponent Selector="#app" ComponentType="{x:Type pages:Mahamrityunjaya}" />
             </BlazorWebView.RootComponents>
         </BlazorWebView>
     </ContentPage>
